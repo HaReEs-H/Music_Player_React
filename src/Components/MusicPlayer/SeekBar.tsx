@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Seekbar = ({ value, min, max, onInput, setSeekTime, appTime }) => {
   // converts the time to format 0:00
   const getTime = (time) =>
