@@ -1,6 +1,6 @@
-import React from 'react'
+import { TrackProps } from '../../types'
 
-const Track = ({ isPlaying, isActive, activeSong }) => (
+const Track = ({ isPlaying, isActive, activeSong }: TrackProps) => (
   <div className="flex-1 flex items-center justify-start">
     <div
       className={`${
@@ -8,7 +8,7 @@ const Track = ({ isPlaying, isActive, activeSong }) => (
       } hidden sm:block h-16 w-16 mr-4`}
     >
       <img
-        src={activeSong?.images?.coverart}
+        src={activeSong?.images?.converart}
         alt="cover art"
         className="rounded-full"
       />

@@ -1,3 +1,5 @@
+import { ChangeEvent, Dispatch, SetStateAction } from 'react'
+
 type Song = {
   id: string
   title: string
@@ -9,9 +11,9 @@ export type ControlsProps = {
   isPlaying: boolean
   isActive: boolean
   repeat: boolean
-  setRepeat: React.Dispatch<React.SetStateAction<boolean>>
+  setRepeat: Dispatch<SetStateAction<boolean>>
   shuffle: boolean
-  setShuffle: React.Dispatch<React.SetStateAction<boolean>>
+  setShuffle: Dispatch<SetStateAction<boolean>>
   currentSongs: Song[]
   handlePlayPause: () => void
   handlePrevSong: () => void
@@ -41,4 +43,35 @@ export type PlayerProps = {
   onTimeUpdate: () => void
   onLoadedData: () => void
   repeat: boolean
+}
+
+export type SeekBarProps = {
+  value: number
+  min: number
+  max: number
+  onInput: (event: ChangeEvent<HTMLInputElement>) => void
+  setSeekTime: (time: number) => void
+  appTime: number
+}
+
+type ActiveSong = {
+  images: {
+    converart: string
+  }
+  title: string
+  subtitle: string
+}
+
+export type TrackProps = {
+  isPlaying: boolean
+  isActive: boolean
+  activeSong: ActiveSong | null
+}
+
+export type VolumeBarProps = {
+  value: number
+  min: number
+  max: number
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+  setVolume: (volume: number) => void
 }
