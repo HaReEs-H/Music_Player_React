@@ -8,7 +8,7 @@ const Track = ({ isPlaying, isActive, activeSong }: TrackProps) => (
       } hidden sm:block h-16 w-16 mr-4`}
     >
       <img
-        src={activeSong?.images?.converart}
+        src={activeSong?.images?.coverart}
         alt="cover art"
         className="rounded-full"
       />

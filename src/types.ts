@@ -1,10 +1,14 @@
-import { ChangeEvent, Dispatch, SetStateAction } from 'react'
+import { ChangeEvent, Dispatch, SetStateAction, SyntheticEvent } from 'react'
 
-type Song = {
+type Song1 = {
   id: string
   title: string
   artist: string
   duration: number
+}
+
+export type Song = {
+  track?: any
 }
 
 export type ControlsProps = {
@@ -14,40 +18,35 @@ export type ControlsProps = {
   setRepeat: Dispatch<SetStateAction<boolean>>
   shuffle: boolean
   setShuffle: Dispatch<SetStateAction<boolean>>
-  currentSongs: Song[]
+  currentSongs: Song1[]
   handlePlayPause: () => void
   handlePrevSong: () => void
   handleNextSong: () => void
 }
 
 export type PlayerState = {
-  activeSong: Song | null
-  currentSongs: Song[]
+  activeSong: ActiveSong | null
+  currentSongs: ActiveSong[]
   currentIndex: number
   isActive: boolean
   isPlaying: boolean
 }
 
 export type PlayerProps = {
-  activeSong: {
-    hub?: {
-      actions?: {
-        uri?: string
-      }[]
-    }
-  }
+  activeSong: ActiveSong | null
   isPlaying: boolean
   volume: number
   seekTime: number
   onEnded: () => void
-  onTimeUpdate: () => void
-  onLoadedData: () => void
+  onTimeUpdate: (event: SyntheticEvent<HTMLMediaElement, Event>) => void
+  onLoadedData: (event: SyntheticEvent<HTMLMediaElement, Event>) => void
   repeat: boolean
+  currentIndex: number
 }
 
 export type SeekBarProps = {
   value: number
-  min: number
+  min: string
   max: number
   onInput: (event: ChangeEvent<HTMLInputElement>) => void
   setSeekTime: (time: number) => void
@@ -55,11 +54,19 @@ export type SeekBarProps = {
 }
 
 type ActiveSong = {
-  images: {
-    converart: string
-  }
+  id: string
   title: string
+  artist: string
+  duration: number
+  images: {
+    coverart: string
+  }
   subtitle: string
+  hub: {
+    actions: {
+      uri: string
+    }[]
+  }
 }
 
 export type TrackProps = {
@@ -70,8 +77,8 @@ export type TrackProps = {
 
 export type VolumeBarProps = {
   value: number
-  min: number
-  max: number
+  min: string
+  max: string
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
   setVolume: (volume: number) => void
 }
