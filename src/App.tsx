@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
 
-import { Searchbar, Sidebar, MusicPlayer, TopPlay } from './Components/Index'
+import { Searchbar, Sidebar, MusicPlayer, TopPlay } from './Components'
 import {
   ArtistDetails,
   TopArtists,
@@ -11,9 +11,10 @@ import {
   SongDetails,
   TopCharts,
 } from './Pages'
+import { RootState } from './types'
 
 const App = () => {
-  const { activeSong } = useSelector((state) => state.player)
+  const { activeSong } = useSelector((state: RootState) => state.player)
 
   return (
     <div className="relative flex">

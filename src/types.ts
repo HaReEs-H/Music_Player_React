@@ -11,6 +11,10 @@ export type Song = {
   track?: any
 }
 
+export type RootState = {
+  player: PlayerState
+}
+
 export type ControlsProps = {
   isPlaying: boolean
   isActive: boolean
