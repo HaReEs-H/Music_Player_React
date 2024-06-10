@@ -1,6 +1,6 @@
-import React from 'react'
+import { TrackProps } from '../../types'
 
-const Track = ({ isPlaying, isActive, activeSong }) => (
+const Track = ({ isPlaying, isActive, activeSong }: TrackProps) => (
   <div className="flex-1 flex items-center justify-start">
     <div
       className={`${
